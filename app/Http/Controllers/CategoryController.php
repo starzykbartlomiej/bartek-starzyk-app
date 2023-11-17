@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('category.index', ['categories' => $categories]);
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -28,7 +30,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->saveDataFromRequestAsCategory($request, new Category());
     }
 
     /**
@@ -36,7 +38,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show', ['category' => $category]);
     }
 
     /**
@@ -44,7 +46,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', ['category' => $category]);
     }
 
     /**
@@ -52,7 +54,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        return $this->saveDataFromRequestAsCategory($request, $category);
     }
 
     /**
@@ -60,6 +62,17 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return Redirect::to('/category');
+    }
+
+    private function saveDataFromRequestAsCategory(Request $request, Category $category) {
+        $form_parameters = $request->all();
+        $color = ltrim($form_parameters['color'], '#');
+        $name = $form_parameters['name'];
+        $category->color = $color;
+        $category->name = $name;
+        $category->save();
+        return Redirect::to('/category');
     }
 }

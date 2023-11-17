@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class EventController extends Controller
 {
@@ -12,7 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+        return view('event.index', ['events' => $events]);
     }
 
     /**
@@ -20,7 +24,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('event.create', ['categories' => $categories]);
     }
 
     /**
@@ -28,7 +33,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->saveDataFromRequestAsEvent($request, new Event());
     }
 
     /**
@@ -36,7 +41,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('event.show', ['event' => $event]);
     }
 
     /**
@@ -44,7 +49,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        $categories = Category::all();
+        return view('event.edit', ['event' => $event, 'categories' => $categories]);
     }
 
     /**
@@ -52,7 +58,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        return $this->saveDataFromRequestAsEvent($request, $event);
     }
 
     /**
@@ -61,5 +67,19 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    private function saveDataFromRequestAsEvent(Request $request, Event $event)
+    {
+        $form_parameters = $request->all();
+        $event->name = $form_parameters['name'];
+        $event->description = $form_parameters['description'];
+        $event->start_date = $form_parameters['start_date'];
+        $event->end_date = $form_parameters['end_date'];
+        $event->image_link = $form_parameters['image_link'];
+        $event->category_id = $form_parameters['category_id'];
+        $event->user_id = $request->user()->id;
+        $event->save();
+        return Redirect::to('/event');
     }
 }
