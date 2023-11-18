@@ -173,7 +173,8 @@ a {
     box-shadow: 0px 4px 31px 0px rgba(0, 0, 0, 0.15);
     color: white;
     margin-bottom: 0;
-    font-size: 16px;'
+    font-size: 16px;
+'
 }
 
 .spacing {
@@ -211,4 +212,19 @@ a {
 
 .color-input {
     height: 60px;
+}
+
+.link-no-effect {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.date-input {
+    height: 60px;
+    color:white;
+}
+
+.dropdown-input {
+    height: 60px;
+    color:white;
 }

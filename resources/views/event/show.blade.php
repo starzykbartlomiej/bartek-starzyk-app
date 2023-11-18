@@ -1,33 +1,29 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <a href="/event">{{__("Back")}}</a>
+<x-body>
+    <x-slot name="content">
 
-            <a href={{"/event/" . $event->id . "/edit"}}>{{__("Edit")}}</a>
+        <x-secondary-navigation-edit-delete>
+            <x-slot name="back_link">/event</x-slot>
+            <x-slot name="edit_link">{{'/event/' . $event->id . '/edit'}}</x-slot>
+            <x-slot name="delete_link">{{'/event/' . $event->id}}</x-slot>
+        </x-secondary-navigation-edit-delete>
 
-            <form method="post" action="{{'/event/' . $event->id}}" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">{{__("Delete")}}</button>
-            </form>
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <a href={{"event/" . $event->id}}>
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        {{$event->id}} <br>
-                        {{$event->name}} <br>
-                        {{$event->description}} <br>
-                        {{$event->start_date}} <br>
-                        {{$event->end_date}} <br>
-                        {{$event->image_link}} <br>
-                        {{$event->category->name}}
+        <div class="category-grid">
+            <div class="timeline-empty">
+            </div>
+            <div class="category-card" style="justify-content: center">
+                <a href={{"/event/" . $event->id}}>
+                    <div class="timeline-component timeline-content">
+                        <h3>{{$event->start_date}} -> {{$event->end_date}}</h3>
+                        <h3>{{$event->name}}</h3>
+                        <p>{{$event->description}}</p>
+                        <p>{{$event->image_link}}</p>
+                        <p>{{$event->category->name}}</p>
+                        <span class="dot" style="background-color:#{{$event->category->color}}"></span>
                     </div>
                 </a>
             </div>
+            <div class="timeline-empty">
+            </div>
         </div>
-    </div>
-</x-app-layout>
+    </x-slot>
+</x-body>
