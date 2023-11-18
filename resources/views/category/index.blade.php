@@ -1,24 +1,22 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <a href="/dashboard">{{__("Back")}}</a>
-            <a href="/category/create">{{__("Create")}}</a>
-        </h2>
-    </x-slot>
+<x-body>
+    <x-slot name="content">
 
-    @foreach($categories as $category)
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+        <x-secondary-navigation>
+            <x-slot name="back_link">/</x-slot>
+            <x-slot name="create_link">category/create</x-slot>
+        </x-secondary-navigation>
+
+        <div class="category-grid">
+            @foreach($categories as $category)
+                <div class="category-card">
                     <a href={{"/category/" . $category->id}}>
-                        <div class="p-6 text-gray-900 dark:text-gray-100">
-                            {{$category->id}} <br>
-                            {{$category->name}} <br>
-                            color: {{$category->color}} <br>
+                        <div class="timeline-component timeline-content">
+                            {{$category->name}} <br> <br>
+                            <span class="dot" style="background-color:#{{$category->color}}"></span>
                         </div>
                     </a>
                 </div>
-            </div>
+            @endforeach
         </div>
-    @endforeach
-</x-app-layout>
+    </x-slot>
+</x-body>

@@ -1,27 +1,25 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <a href="/category">{{__("Back")}}</a>
+<x-body>
+    <x-slot name="content">
 
-            <a href={{'/category/' . $category->id . '/edit'}}>{{__("Edit")}}</a>
+        <x-secondary-navigation-edit-delete>
+            <x-slot name="back_link">/category</x-slot>
+            <x-slot name="edit_link">{{'/category/' . $category->id . '/edit'}}</x-slot>
+            <x-slot name="delete_link">{{'/category/' . $category->id}}</x-slot>
+        </x-secondary-navigation-edit-delete>
 
-            <form method="post" action="{{'/category/' . $category->id}}" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">{{__("Delete")}}</button>
-            </form>
-        </h2>
-    </x-slot>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        {{$category->id}} <br>
-                        {{$category->name}} <br>
-                        color: {{$category->color}} <br>
-                    </div>
+        <div class="category-grid">
+            <div class="timeline-empty">
+            </div>
+                <div class="category-card" style="justify-content: center">
+                    <a href={{"/category/" . $category->id}}>
+                        <div class="timeline-component timeline-content">
+                            {{$category->name}} <br> <br>
+                            <span class="dot" style="background-color:#{{$category->color}}"></span>
+                        </div>
+                    </a>
                 </div>
+            <div class="timeline-empty">
             </div>
         </div>
-</x-app-layout>
+    </x-slot>
+</x-body>

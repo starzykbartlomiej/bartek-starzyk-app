@@ -1,28 +1,29 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <a href="/category">{{__("Back")}}</a>
-        </h2>
-    </x-slot>
+<x-body>
+    <x-slot name="content">
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
+        <x-secondary-navigation-back>
+            <x-slot name="back_link">/category</x-slot>
+        </x-secondary-navigation-back>
 
-                        <form action="/category" method=post>
-                            @csrf
-                            <label for="name">Category name:</label><br>
-                            <input type="text" id="name" name="name"><br>
+        <div class="category-grid">
+            <div class="timeline-empty">
+            </div>
+            <div class="category-card" style="justify-content: center">
+                <div class="timeline-component timeline-content">
+                    <form action="/category" method=post>
+                        @csrf
+                        <label for="name">Category name:</label><br><br>
+                        <input type="text" id="name" name="name" class="input-white"><br><br>
 
-                            <label for="color">Category color:</label><br>
-                            <input type="color" id="color" name="color"><br>
+                        <label for="color">Category color:</label><br><br>
+                        <input type="color" id="color" name="color" class="color-input"><br><br>
 
-                            <input type="submit" value="Submit">
-                        </form>
-
-                    </div>
+                        <input type="submit" value="Submit" class="white-border-button">
+                    </form>
                 </div>
             </div>
+            <div class="timeline-empty">
+            </div>
         </div>
-</x-app-layout>
+    </x-slot>
+</x-body>
