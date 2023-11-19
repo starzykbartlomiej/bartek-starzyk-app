@@ -15,7 +15,7 @@ class EventSeeder extends Seeder
     {
         DB::table('events')->insert([
             'name' => 'Bitwa pod Grunwaldem',
-            'description' => 'Bitwa pomiędzy Rzeczpostpolitą a Zakonem Krzyżackim',
+            'description' => 'Bitwa pomiedzy Rzeczpostpolita a Zakonem Krzyzackim',
             'start_date' => '1410-07-15',
             'end_date' => '1410-07-20',
             'image_link' => 'https://chwalazapomniana.pl/wp-content/uploads/2020/07/Wojciech_Kossak_Dwa_miecze.jpg',
@@ -25,7 +25,7 @@ class EventSeeder extends Seeder
 
         DB::table('events')->insert([
             'name' => 'Bitwa pod Kircholmem',
-            'description' => 'Przyczyną bitwy były zmagania o dominium Maris Baltici. ',
+            'description' => 'Przyczyna bitwy byly zmagania o dominium Maris Baltici. ',
             'start_date' => '1605-07-15',
             'end_date' => '1605-07-20',
             'image_link' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Kirholm_1605_I.JPG/480px-Kirholm_1605_I.JPG',
@@ -54,8 +54,8 @@ class EventSeeder extends Seeder
         ]);
 
         DB::table('events')->insert([
-            'name' => 'Bitwa o Anglię',
-            'description' => 'kampania powietrzna głównie nad południową i centralną Anglią',
+            'name' => 'Bitwa o Anglie',
+            'description' => 'kampania powietrzna glownie nad poludniową i centralna Anglia',
             'start_date' => '1940-07-10',
             'end_date' => '1940-10-31',
             'image_link' => 'https://upload.wikimedia.org/wikipedia/commons/8/82/Heinkel_He_111_during_the_Battle_of_Britain.jpg',
@@ -64,8 +64,8 @@ class EventSeeder extends Seeder
         ]);
 
         DB::table('events')->insert([
-            'name' => 'Okrągły Stół',
-            'description' => 'Nnegocjacje prowadzone przez przedstawicieli władz Polskiej Rzeczypospolitej Ludowej, demokratycznej opozycji oraz stron kościelnych',
+            'name' => 'Okragly Stol',
+            'description' => 'Negocjacje prowadzone przez przedstawicieli wladz Polskiej Rzeczypospolitej Ludowej, demokratycznej opozycji oraz stron koscielnych',
             'start_date' => '1989-02-05',
             'end_date' => '1989-02-06',
             'image_link' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Okr%C4%85g%C5%82y_St%C3%B3%C5%82_Pa%C5%82ac_Prezydencki_w_Warszawie_2019.jpg/480px-Okr%C4%85g%C5%82y_St%C3%B3%C5%82_Pa%C5%82ac_Prezydencki_w_Warszawie_2019.jpg',

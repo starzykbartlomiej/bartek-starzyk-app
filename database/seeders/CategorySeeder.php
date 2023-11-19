@@ -21,13 +21,13 @@ class CategorySeeder extends Seeder
 
         DB::table('categories')->insert([
             'id' => 2,
-            'name' => 'Druga wojna światowa',
+            'name' => 'Druga wojna swiatowa',
             'color' => '964b00',
         ]);
 
         DB::table('categories')->insert([
             'id' => 3,
-            'name' => 'Czasy współczesne',
+            'name' => 'Czasy wspolczesne',
             'color' => '0000ff',
         ]);
     }
