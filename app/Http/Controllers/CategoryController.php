@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']); // Apply auth middleware to all methods except 'index'
+    }
+
+
     /**
      * Display a listing of the resource.
      */

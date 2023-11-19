@@ -10,7 +10,7 @@
             <a href="/event">
                 <div class="navigation-element">Events</div>
             </a>
-            <a href="/print">
+            <a href="/pdf">
                 <div class="navigation-element">Print</div>
             </a>
             <a href="/category">
