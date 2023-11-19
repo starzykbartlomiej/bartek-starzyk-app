@@ -17,7 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-
 # Compiled source #
 ###################
 *.com
@@ -55,3 +54,5 @@ yarn-error.log
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.out
+*.pdf
