@@ -1,18 +1,26 @@
 <x-body>
     <x-slot name="content">
-        <x-secondary-navigation>
-            <x-slot name="back_link">/</x-slot>
-            <x-slot name="create_link">event/create</x-slot>
+        <div class="secondary-navigation">
+            <a href="/event">
+                <div class="purple-button">Back</div>
+            </a>
 
-        </x-secondary-navigation>
+            <div class="spacing"></div>
 
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Choose category</button>
-            <div id="myDropdown" class="dropdown-content">
-                @foreach($categories as $category)
-                    <a href="{{'/event?category_id=' . $category->id}}">{{$category->name}}</a>
-                @endforeach
+            <a href="/event/create">
+                <div class="white-border-button">Create</div>
+            </a>
+
+            <div class="spacing"></div>
+
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Choose category</button>
+                <div id="myDropdown" class="dropdown-content">
+                    @foreach($categories as $category)
+                        <a href="{{'/event?category_id=' . $category->id}}">{{$category->name}}</a>
+                    @endforeach
                     <a href="/event">All</a>
+                </div>
             </div>
         </div>
 
