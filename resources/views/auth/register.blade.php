@@ -7,7 +7,6 @@
                 </div>
                 <div class="category-card" style="justify-content: center">
                     <div class="timeline-component timeline-content">
-                        <form action="/category" method=post>
                             @csrf
                             <label for="name">Name</label><br>
                             <input type="text" id="name" name="name" class="input-white"><br><br>
@@ -28,8 +27,6 @@
                                 </a>
                             @endif
                             <br>
-
-                        </form>
                     </div>
                 </div>
                 <div class="timeline-empty">
