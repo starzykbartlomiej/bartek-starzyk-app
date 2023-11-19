@@ -16,7 +16,7 @@
                         <h3>{{$event->start_date}} -> {{$event->end_date}}</h3>
                         <h3>{{$event->name}}</h3>
                         <p>{{$event->description}}</p>
-                        <p>{{$event->image_link}}</p>
+                        <img src="{{$event->image_link}}" width="300px"> <br><br>
                         <p>{{$event->category->name}}</p>
                         <span class="dot" style="background-color:#{{$event->category->color}}"></span>
                     </div>
