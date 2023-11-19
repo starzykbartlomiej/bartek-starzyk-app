@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -13,10 +14,19 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::all()->sortBy('start_date');
-        return view('event.index', ['events' => $events]);
+        $category_id_text = $request->input('category_id');
+        $category_id_number = intval($category_id_text);
+        if ($category_id_number !== 0 || is_numeric($category_id_text)) {
+            $events = Event::all()->where('category_id', $category_id_number)->sortBy('start_date');
+        } else {
+            $events = Event::all()->sortBy('start_date');
+        }
+
+        $categories = Category::all();
+
+        return view('event.index', ['events' => $events, 'categories' => $categories]);
     }
 
     /**
